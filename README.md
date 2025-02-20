@@ -65,27 +65,27 @@ python train.py
 训练过程中会在每个 epoch 后在验证集上评估模型，训练结束后你还可以在测试集上运行评估，查看最终的 eval_loss 等指标。评估结果会打印在日志中。
 
 # 模型调用示例
-快速测试
+## 快速测试
 你可以使用 Hugging Face 的 pipeline 快速加载和调用模型进行实体识别测试。创建一个简单的 Python 脚本，例如 test.py：
 from transformers import pipeline
 
-## 从保存的模型目录加载模型和分词器
+#从保存的模型目录加载模型和分词器
 ner = pipeline("token-classification", model="./ner_model", tokenizer="./ner_model", aggregation_strategy="simple")
 
-## 输入示例文本
+#输入示例文本
 text = "为维护中华人民共和国国家主权和权益，合理开发利用海洋，有秩序地铺设和保护海底电缆、管道。"
 result = ner(text)
 print(result)
 运行后，会输出模型识别的实体及其类别、分数和位置范围。
 
-# 后端 API 部署
+## 后端 API 部署
 如果需要将模型集成到后端服务，可以使用 Flask 构建一个简单的 API。以下是一个示例代码（保存为 app.py）：
 from flask import Flask, request, jsonify
 from transformers import pipeline
 
 app = Flask(__name__)
 
-## 加载模型（启动时加载，避免每次请求重复加载）
+#加载模型（启动时加载，避免每次请求重复加载）
 ner_pipeline = pipeline(
     "token-classification",
     model="./ner_model",
