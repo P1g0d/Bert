@@ -69,7 +69,7 @@ python train.py
 你可以使用 Hugging Face 的 pipeline 快速加载和调用模型进行实体识别测试。创建一个简单的 Python 脚本，例如 test.py：
 from transformers import pipeline
 
-# 从保存的模型目录加载模型和分词器
+## 从保存的模型目录加载模型和分词器
 ner = pipeline("token-classification", model="./ner_model", tokenizer="./ner_model", aggregation_strategy="simple")
 
 ## 输入示例文本
